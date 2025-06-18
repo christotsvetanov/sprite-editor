@@ -1,0 +1,399 @@
+/* --- Global Styles & Color Variables --- */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --danger-color: #dc3545;
+    --danger-hover: #c82333;
+    --active-color: #28a745;
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* --- Dark Theme (Default) --- */
+body {
+    --bg-color: #1a1a1a;
+    --panel-color: #2c2c2c;
+    --border-color: #444;
+    --text-color: #e0e0e0;
+    --text-muted: #888;
+    --btn-bg: #383838;
+    --btn-hover-bg: #4a4a4a;
+    --btn-hover-border: #666;
+}
+
+/* --- Light Theme --- */
+body.light-theme {
+    --bg-color: #f4f4f9;
+    --panel-color: #ffffff;
+    --border-color: #d1d1d6;
+    --text-color: #1c1c1e;
+    --text-muted: #6e6e73;
+    --btn-bg: #e9e9eb;
+    --btn-hover-bg: #dcdce0;
+    --btn-hover-border: #b5b5b8;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.editor-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* --- Theme Switcher --- */
+.theme-switcher {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-switcher .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    background-color: #4d4d52;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-label::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: 4px;
+    left: 4px;
+    transition: transform 0.3s;
+}
+
+#theme-toggle:checked+.toggle-label {
+    background-color: var(--primary-color);
+}
+
+#theme-toggle:checked+.toggle-label::after {
+    transform: translateX(22px);
+}
+
+
+.panel {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+#sprite-list-container {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.editor-main {
+    flex-grow: 1;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* --- Buttons & Controls --- */
+.btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-bg);
+    border-color: var(--btn-hover-border);
+}
+
+.btn.active {
+    background-color: var(--active-color);
+    border-color: var(--active-color);
+    color: white;
+}
+
+.btn.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+    color: white;
+}
+
+.btn.btn-danger:hover {
+    background-color: var(--danger-hover);
+    border-color: var(--danger-hover);
+}
+
+/* FIX: Add visual separation for file controls */
+.file-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sprite-list-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.move-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.move-controls .btn {
+    flex-grow: 1;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modes {
+    margin-top: 15px;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 6px;
+}
+
+/* --- Sprite List --- */
+#sprite-list {
+    max-height: 500px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.sprite-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.sprite-preview:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.sprite-preview.selected {
+    border-color: var(--primary-color);
+    background-color: #2a3a4d;
+}
+
+body.light-theme .sprite-preview.selected {
+    background-color: #e2f1ff;
+}
+
+.sprite-preview canvas {
+    border: 1px solid #000;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* --- Main Canvas & Attribute Editor --- */
+#sprite-canvas {
+    border: 2px solid var(--border-color);
+    background-color: #000;
+    flex-grow: 0;
+    flex-shrink: 0;
+    cursor: crosshair;
+}
+
+#attribute-controls {
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#attribute-controls.hidden {
+    display: none;
+}
+
+.attr-group {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.attr-group h4 {
+    margin: 0 0 10px 0;
+    font-weight: 500;
+}
+
+.attr-btn {
+    width: 40px;
+    height: 30px;
+    font-size: 14px;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.attr-btn.active {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* --- Block Selection Modal --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.modal-overlay:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--panel-color);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+#modal-block-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.block-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    background-color: var(--btn-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.block-item:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+#modal-close-btn {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
