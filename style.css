@@ -156,6 +156,11 @@ header h1 {
     color: var(--text-color);
     cursor: pointer;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* FIX: Adds space between the icon and the text */
 }
 
 .btn:hover {
@@ -191,20 +196,17 @@ header h1 {
     border-color: var(--danger-hover);
 }
 
-/* FIX: Add visual separation for file controls */
-.file-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-}
-
+.file-controls,
 .sprite-list-controls {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.file-controls {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .move-controls {
