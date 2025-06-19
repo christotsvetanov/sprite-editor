@@ -226,6 +226,8 @@ header h1 {
 
 .modes {
     margin-top: 15px;
+    display: flex;
+    gap: 10px;
 }
 
 input[type="number"] {
